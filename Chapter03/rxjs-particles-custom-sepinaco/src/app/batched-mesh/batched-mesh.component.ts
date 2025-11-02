@@ -5,14 +5,14 @@ import { MapControls } from 'three/examples/jsm/controls/MapControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { GUI } from 'lil-gui';
 import { acceleratedRaycast, computeBatchedBoundsTree } from 'three-mesh-bvh';
-import { 
-  createRadixSort, 
-  extendBatchedMeshPrototype, 
-  getBatchedMeshLODCount 
+import {
+  createRadixSort,
+  extendBatchedMeshPrototype,
+  getBatchedMeshLODCount
 } from '@three.ez/batched-mesh-extensions';
-import { 
-  performanceRangeLOD, 
-  simplifyGeometriesByErrorLOD 
+import {
+  performanceRangeLOD,
+  simplifyGeometriesByErrorLOD
 } from '@three.ez/simplify-geometry';
 
 // Add and override BatchedMesh methods
@@ -62,7 +62,7 @@ export class BatchedMeshComponent implements OnInit, OnDestroy {
   private boundOnPointerMove?: (event: PointerEvent) => void;
   private boundOnWindowResize?: () => void;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone) { }
 
   async ngOnInit() {
     await this.init();
@@ -220,7 +220,7 @@ export class BatchedMeshComponent implements OnInit, OnDestroy {
 
     this.gui.add(this.config, 'freeze').onChange((v: boolean) => {
       if (this.batchedMesh) {
-        (this.batchedMesh as any).onBeforeRender = v ? () => {} : onBeforeRender;
+        (this.batchedMesh as any).onBeforeRender = v ? () => { } : onBeforeRender;
       }
     });
 
@@ -282,7 +282,7 @@ export class BatchedMeshComponent implements OnInit, OnDestroy {
     if (!this.renderer || !this.scene || !this.camera) return;
 
     this.stats?.begin();
-    
+
     this.controls?.update();
     this.renderer.render(this.scene, this.camera);
 
